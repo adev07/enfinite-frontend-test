@@ -5,14 +5,10 @@ import Select from "@/components/formControls/select";
 import { validMomentTimezones, mainData } from "@/data/data";
 import { ColumnCharts } from "@/components/charts/column-chart";
 import { LineCharts } from "@/components/charts/line-chart";
-import dynamic from "next/dynamic";
 import moment from "moment-timezone";
 import dayjs from "dayjs";
+import { Table } from "antd";
 import Loader from "@/components/loader";
-
-const Table = dynamic(() => import("antd").then((antd) => antd.Table), {
-  ssr: false,
-});
 
 function Dashboard() {
   const [selectedField, setSelectedField] = useState("Alpha 1");
