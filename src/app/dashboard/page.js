@@ -5,10 +5,14 @@ import Select from "@/components/formControls/select";
 import { validMomentTimezones, mainData } from "@/data/data";
 import { ColumnCharts } from "@/components/charts/column-chart";
 import { LineCharts } from "@/components/charts/line-chart";
+import dynamic from "next/dynamic";
 import moment from "moment-timezone";
 import dayjs from "dayjs";
-import { Table } from "antd";
 import Loader from "@/components/loader";
+
+const Table = dynamic(() => import("antd").then((antd) => antd.Table), {
+  ssr: false,
+});
 
 function Dashboard() {
   const [selectedField, setSelectedField] = useState("Alpha 1");
@@ -251,7 +255,7 @@ function Dashboard() {
       sorter: (a, b) => a.production - b.production,
     },
   ];
-  if (typeof window !== undefined) return (
+  return (
     <div>
       {loading && <Loader />}
       <div className="grid grid-cols-4 gap-4">
@@ -327,7 +331,6 @@ function Dashboard() {
       </div>
     </div>
   );
-  return null;
 }
 
 export default Dashboard;
