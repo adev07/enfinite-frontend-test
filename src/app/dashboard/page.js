@@ -251,7 +251,7 @@ function Dashboard() {
       sorter: (a, b) => a.production - b.production,
     },
   ];
-  if (typeof document !== 'undefined') return (
+  return (
     <div>
       {loading && <Loader />}
       <div className="grid grid-cols-4 gap-4">
@@ -326,8 +326,7 @@ function Dashboard() {
         </div>
       </div>
     </div>
-  );
-  return null;
+    );
 }
 
 export default Dashboard;
